@@ -60,6 +60,15 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.6.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
@@ -69,11 +78,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.10.0</version> <!-- Atualize para a versão mais
-				recente -->
+				<version>3.10.0</version>
 				<configuration>
-					<source>17</source> <!-- Altere a versão da origem para 17 -->
-					<target>17</target> <!-- Altere a versão de destino para 17 -->
+					<source>1.8</source>
+					<target>1.8</target> 
 				</configuration>
 			</plugin>
 		</plugins>
