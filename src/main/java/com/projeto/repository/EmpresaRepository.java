@@ -3,6 +3,7 @@ package com.projeto.repository;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import com.projeto.model.Empresa;
@@ -11,6 +12,7 @@ public class EmpresaRepository implements Serializable {
 
 	private static final long serialVersionUID = -149372040002060236L;
 
+	@Inject
 	private EntityManager manager;
 
 	public EmpresaRepository() {
