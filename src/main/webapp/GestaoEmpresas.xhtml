@@ -18,7 +18,9 @@
 	<h2>Listagem de Empresas</h2>
 
 	<div id="conteudo">
-		<p:dataTable value="#{gestaoEmpresasController.listaEmpresas}" var="empresa" emptyMessage="Nenhum registro encontrado">
+		<p:dataTable value="#{gestaoEmpresasController.listaEmpresas}" var="empresa" 
+				emptyMessage="Nenhum registro encontrado" paginator="true" rows="10"
+				paginatorPosition="bottom">
 			<p:column headerText="Razão Social">
 				<h:outputText value="#{empresa.rzSocial}"/>
 			</p:column>

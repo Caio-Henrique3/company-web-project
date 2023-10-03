@@ -28,7 +28,7 @@ public class EmpresaRepository implements Serializable {
 	}
 
 	public List<Empresa> obterEmpresas() {
-		return manager.createQuery("FROM Empresa ", Empresa.class).getResultList();
+		return manager.createQuery("FROM Empresa ORDER BY rzSocial", Empresa.class).getResultList();
 	}
 	
 	public List<Empresa> obterPorNome(String nome) {
