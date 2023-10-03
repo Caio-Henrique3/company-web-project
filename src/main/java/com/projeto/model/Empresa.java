@@ -1,6 +1,7 @@
 package com.projeto.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -44,7 +45,10 @@ public class Empresa implements Serializable {
 	private String cnpj;
 
 	@Column(name = "data_criacao", nullable = false)
-	private Date dataCricao;
+	private Date dataCriacao;
+
+	@Column(precision = 10, scale = 2)
+	private BigDecimal faturamento;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo_empresa")
