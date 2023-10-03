@@ -27,6 +27,10 @@ public class EmpresaRepository implements Serializable {
 		return manager.find(Empresa.class, id);
 	}
 
+	public List<Empresa> obterEmpresas() {
+		return manager.createQuery("FROM Empresa ", Empresa.class).getResultList();
+	}
+	
 	public List<Empresa> obterPorNome(String nome) {
 		return manager.createQuery("FROM Empresa "
 								 + "WHERE nomeFantasia LIKE :nomeFantasia", Empresa.class)

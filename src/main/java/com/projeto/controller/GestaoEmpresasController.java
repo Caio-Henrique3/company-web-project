@@ -1,35 +1,31 @@
 package com.projeto.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.projeto.enums.TipoEmpresa;
 import com.projeto.model.Empresa;
+import com.projeto.repository.EmpresaRepository;
+
+import lombok.Getter;
 
 @Named
 @ViewScoped
+@Getter
 public class GestaoEmpresasController implements Serializable {
 
 	private static final long serialVersionUID = 3554380448381882094L;
 
-	private Empresa empresa = new Empresa();
+	@Inject
+	private EmpresaRepository empresaRepository;
 
-	public Empresa getEmpresa() {
-		return empresa;
-	}
+	private List<Empresa> listaEmpresas;
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
-	public TipoEmpresa[] getTiposEmpresa() {
-		return TipoEmpresa.values();
-	}
-
-	public void salvar() {
-		System.out.println(empresa.toString());
+	public void obterEmpresas() {
+		this.listaEmpresas = empresaRepository.obterEmpresas();
 	}
 
 }

@@ -8,12 +8,24 @@ body {
 }
 
 header {
-	padding: 5px;
-	margin-bottom: 20px;
-	height: 30px;
-	background-color: #545454;
+	display: flex;
+	margin-bottom: 10px;
+	height: 135px;
+	background-color: #0892d0;
 	color: #fff;
-	box-shadow: 0px 2px 2px #ccc
+	box-shadow: 0px 2px 2px #ccc;
+}
+
+.div-image {
+	display: flex;
+	border: 1px solid #fff;
+	padding: 2px 0px;
+	position: relative;
+}
+
+.tag-image {
+	max-width: 250px;
+	align-items: center;
 }
 
 #conteudo {
@@ -21,10 +33,14 @@ header {
 }
 
 footer {
-	border-top: 1px solid #ccc;
-	padding: 5px 8px;
+	border-top: 1px solid #0892d0;
+	padding: 10px 8px;
 	margin-top: 20px;
-	margin-bottom: 10px
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 600;
+	font-style: italic;
 }
 
 h1 {
