@@ -1,26 +1,48 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="WEB-INF/template/Layout.xhtml">
 
-<h:head>
-	<meta charset="UTF-8"/>
-	<title>Gestão Empresas</title>
-	<h:outputStylesheet name="estilo.css" />
+	<ui:define name="titulo">
+		Empresas
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<f:metadata>
+			<f:viewAction action="#{gestaoEmpresasController.obterEmpresas}" />
+		</f:metadata>
 	
-	<f:metadata>
-		<f:viewAction action="#{gestaoEmpresasController.obterEmpresas}" />
-	</f:metadata>
-</h:head>
-
-<h:body>
-	<header>
-		<h2 class="title-text">Empresas</h2>
-	</header>
-
-	<div id="conteudo">
 		<h:form>
+			<p:toolbar>
+				<f:facet name="left">
+					<p:inputText class="mr-2" placeholder="Digite para pesquisar..." size="50" />
+	
+					<p:commandButton type="button" value="Pesquisar" icon="pi pi-search" />
+
+					<i class="pi pi-pause px-2"/>
+
+					<p:commandButton styleClass="ui-button-success" type="button" 
+						value="Incluir Empresa" onclick="PF('empresaDialog').show()" icon="pi pi-plus" />
+
+					<i class="pi pi-pause px-2"/>
+
+					<p:commandButton class="mr-2" type="button" title="Editar Empresa" 
+						icon="pi pi-file-edit" />
+
+					<p:commandButton styleClass="ui-button-danger" type="button" 
+						title="Excluir Empresa" icon="pi pi-trash" />
+
+					<i class="pi pi-pause px-2"/>
+
+					<p:commandButton type="button" title="Exportar Excel" icon="pi pi-file-excel" />
+				</f:facet>
+			</p:toolbar>
+
+			<p:spacer heigth="10px" />
+
 			<p:dataTable value="#{gestaoEmpresasController.listaEmpresas}" var="empresa" 
 					emptyMessage="Nenhum registro encontrado" paginator="true" rows="10"
 					paginatorPosition="bottom">
@@ -44,17 +66,13 @@
 					<h:outputText value="#{empresa.ramoAtividade.descricao}"/>
 				</p:column>
 			</p:dataTable>
+			
+			<p:dialog header="Incluir Empresa" widgetVar="empresaDialog" modal="true"
+				resizable="false" closeOnEscape="true">
+				
+			</p:dialog>
 		</h:form>
-	</div>
+	
+	</ui:define>
 
-	<footer>
-		<div class="div-image">
-			<h:graphicImage class="tag-image" library="images" name="logo-SenaiB.svg"/>
-		</div>
-		<div class="text-footer">
-			Desenvolvimento Web com JSF e PrimeFaces.
-		</div>
-	</footer>
-</h:body>
-
-</html>
+</ui:composition>
