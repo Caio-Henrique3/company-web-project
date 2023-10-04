@@ -16,6 +16,33 @@
 		</f:metadata>
 	
 		<h:form>
+			<p:toolbar>
+				<f:facet name="left">
+					<p:inputText class="mr-2" placeholder="Digite para pesquisar..." size="50" />
+	
+					<p:commandButton type="button" value="Pesquisar" icon="pi pi-search" />
+
+					<i class="pi pi-pause px-2"/>
+
+					<p:commandButton styleClass="ui-button-success" type="button" 
+						value="Incluir Empresa" onclick="PF('empresaDialog').show()" icon="pi pi-plus" />
+
+					<i class="pi pi-pause px-2"/>
+
+					<p:commandButton class="mr-2" type="button" title="Editar Empresa" 
+						icon="pi pi-file-edit" />
+
+					<p:commandButton styleClass="ui-button-danger" type="button" 
+						title="Excluir Empresa" icon="pi pi-trash" />
+
+					<i class="pi pi-pause px-2"/>
+
+					<p:commandButton type="button" title="Exportar Excel" icon="pi pi-file-excel" />
+				</f:facet>
+			</p:toolbar>
+
+			<p:spacer heigth="10px" />
+
 			<p:dataTable value="#{gestaoEmpresasController.listaEmpresas}" var="empresa" 
 					emptyMessage="Nenhum registro encontrado" paginator="true" rows="10"
 					paginatorPosition="bottom">
@@ -39,6 +66,11 @@
 					<h:outputText value="#{empresa.ramoAtividade.descricao}"/>
 				</p:column>
 			</p:dataTable>
+			
+			<p:dialog header="Incluir Empresa" widgetVar="empresaDialog" modal="true"
+				resizable="false" closeOnEscape="true">
+				
+			</p:dialog>
 		</h:form>
 	
 	</ui:define>
