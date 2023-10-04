@@ -7,7 +7,7 @@
 	<display-name>projeto-jsf</display-name>
 
 	<welcome-file-list>
-		<welcome-file>GestaoEmpresas.xhtml</welcome-file>
+		<welcome-file>Index.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<context-param>
