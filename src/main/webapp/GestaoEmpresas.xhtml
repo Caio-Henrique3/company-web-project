@@ -1,29 +1,58 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="WEB-INF/template/Layout.xhtml">
 
-<h:head>
-	<meta charset="UTF-8"/>
-	<title>Gestão Empresas</title>
-	<h:outputStylesheet name="estilo.css" />
+	<ui:define name="titulo">
+		Empresas
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<f:metadata>
+			<f:viewAction action="#{gestaoEmpresasController.obterEmpresas}" />
+		</f:metadata>
 	
-	<f:metadata>
-		<f:viewAction action="#{gestaoEmpresasController.obterEmpresas}" />
-	</f:metadata>
-</h:head>
-
-<h:body>
-	<header>
-		<h2 class="title-text">Empresas</h2>
-	</header>
-
-	<div id="conteudo">
 		<h:form>
-			<p:dataTable value="#{gestaoEmpresasController.listaEmpresas}" var="empresa" 
-					emptyMessage="Nenhum registro encontrado" paginator="true" rows="10"
-					paginatorPosition="bottom">
+			<p:toolbar>
+				<f:facet name="left">
+					<p:inputText class="mr-2" placeholder="Digite um nome para pesquisar..." size="50"
+						value="#{gestaoEmpresasController.textoPesquisa}" />
+
+					<p:commandButton value="Pesquisar" icon="fa fa-search"
+						actionListener="#{gestaoEmpresasController.pesquisar}" update="empresasDataTable" />
+
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton styleClass="ui-button-success" value="Incluir Empresa" 
+						onclick="PF('empresaDialog').show()" icon="fa fa-plus" />
+
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton class="mr-2" title="Editar Empresa" icon="fa fa-edit" />
+
+					<p:commandButton styleClass="ui-button-danger" title="Excluir Empresa" 
+						icon="fa fa-trash" />
+
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton title="Exportar Excel" icon="fa fa-file-excel-o" />
+				</f:facet>
+			</p:toolbar>
+
+			<p:spacer heigth="10px" />
+
+			<p:dataTable id="empresasDataTable" value="#{gestaoEmpresasController.listaEmpresas}" 
+					var="empresa" emptyMessage="Nenhum registro encontrado" paginator="true" 
+					rows="10" paginatorPosition="bottom">
 				<p:column headerText="Razão Social" sortBy="#{empresa.rzSocial}">
 					<h:outputText value="#{empresa.rzSocial}"/>
 				</p:column>
@@ -44,17 +73,13 @@
 					<h:outputText value="#{empresa.ramoAtividade.descricao}"/>
 				</p:column>
 			</p:dataTable>
+			
+			<p:dialog header="Incluir Empresa" widgetVar="empresaDialog" modal="true"
+				resizable="false" closeOnEscape="true">
+				
+			</p:dialog>
 		</h:form>
-	</div>
+	
+	</ui:define>
 
-	<footer>
-		<div class="div-image">
-			<h:graphicImage class="tag-image" library="images" name="logo-SenaiB.svg"/>
-		</div>
-		<div class="text-footer">
-			Desenvolvimento Web com JSF e PrimeFaces.
-		</div>
-	</footer>
-</h:body>
-
-</html>
+</ui:composition>

@@ -122,3 +122,15 @@ footer {
 .tag-image {
 	max-width: 500px;
 }
+
+.mr-1 {
+	margin-right: 0.25rem !important;
+}
+
+.mr-2 {
+	margin-right: 0.5rem !important;
+}
+
+.mr-3 {
+	margin-right: 1rem !important;
+}
