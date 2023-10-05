@@ -33,8 +33,8 @@ public class EmpresaRepository implements Serializable {
 	
 	public List<Empresa> obterPorNome(String nome) {
 		return manager.createQuery("FROM Empresa "
-								 + "WHERE nomeFantasia LIKE :nomeFantasia", Empresa.class)
-				.setParameter("nomeFantasia", nome + "%")
+								 + "WHERE rzSocial LIKE :rzSocial", Empresa.class)
+				.setParameter("rzSocial", "%" + nome + "%")
 				.getResultList();
 	}
 

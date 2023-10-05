@@ -18,34 +18,41 @@
 		<h:form>
 			<p:toolbar>
 				<f:facet name="left">
-					<p:inputText class="mr-2" placeholder="Digite para pesquisar..." size="50" />
-	
-					<p:commandButton type="button" value="Pesquisar" icon="pi pi-search" />
+					<p:inputText class="mr-2" placeholder="Digite um nome para pesquisar..." size="50"
+						value="#{gestaoEmpresasController.textoPesquisa}" />
 
-					<i class="pi pi-pause px-2"/>
+					<p:commandButton value="Pesquisar" icon="fa fa-search"
+						actionListener="#{gestaoEmpresasController.pesquisar}" update="empresasDataTable" />
 
-					<p:commandButton styleClass="ui-button-success" type="button" 
-						value="Incluir Empresa" onclick="PF('empresaDialog').show()" icon="pi pi-plus" />
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
 
-					<i class="pi pi-pause px-2"/>
+					<p:commandButton styleClass="ui-button-success" value="Incluir Empresa" 
+						onclick="PF('empresaDialog').show()" icon="fa fa-plus" />
 
-					<p:commandButton class="mr-2" type="button" title="Editar Empresa" 
-						icon="pi pi-file-edit" />
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
 
-					<p:commandButton styleClass="ui-button-danger" type="button" 
-						title="Excluir Empresa" icon="pi pi-trash" />
+					<p:commandButton class="mr-2" title="Editar Empresa" icon="fa fa-edit" />
 
-					<i class="pi pi-pause px-2"/>
+					<p:commandButton styleClass="ui-button-danger" title="Excluir Empresa" 
+						icon="fa fa-trash" />
 
-					<p:commandButton type="button" title="Exportar Excel" icon="pi pi-file-excel" />
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton title="Exportar Excel" icon="fa fa-file-excel-o" />
 				</f:facet>
 			</p:toolbar>
 
 			<p:spacer heigth="10px" />
 
-			<p:dataTable value="#{gestaoEmpresasController.listaEmpresas}" var="empresa" 
-					emptyMessage="Nenhum registro encontrado" paginator="true" rows="10"
-					paginatorPosition="bottom">
+			<p:dataTable id="empresasDataTable" value="#{gestaoEmpresasController.listaEmpresas}" 
+					var="empresa" emptyMessage="Nenhum registro encontrado" paginator="true" 
+					rows="10" paginatorPosition="bottom">
 				<p:column headerText="Razão Social" sortBy="#{empresa.rzSocial}">
 					<h:outputText value="#{empresa.rzSocial}"/>
 				</p:column>
